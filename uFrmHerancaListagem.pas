@@ -1,0 +1,32 @@
+unit uFrmHerancaListagem;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uHerancaBase, Vcl.StdCtrls,
+  Vcl.Imaging.pngimage, Vcl.ExtCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.Mask;
+
+type
+  TFrmHerancaBase1 = class(TFrmHerancaBase)
+    pnlFormPrincipal: TPanel;
+    Panel7: TPanel;
+    Panel8: TPanel;
+    DBGrid1: TDBGrid;
+    Panel9: TPanel;
+    MaskEdit1: TMaskEdit;
+    Label1: TLabel;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmHerancaBase1: TFrmHerancaBase1;
+
+implementation
+
+{$R *.dfm}
+
+end.

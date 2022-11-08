@@ -1,0 +1,5 @@
+inherited FrmHerancaBase1: TFrmHerancaBase1
+  Caption = 'FrmHerancaBase1'
+  PixelsPerInch = 96
+  TextHeight = 13
+end

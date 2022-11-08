@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2022/10/19 08:10:58.000.069,=C:\Users\gabri\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/10/19 11:39:38.000.763,=C:\Users\gabri\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/10/26 19:39:24.000.902,=C:\Users\gabri\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/10/26 19:41:47.000.542,=C:\Users\gabri\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/11/06 13:22:27.879,=C:\Users\gabri\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/11/06 13:22:49.528,C:\Git\Delphi\LayoutModerno\uPrincipal.dfm=C:\Users\gabri\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2022/11/06 13:22:49.528,C:\Git\Delphi\LayoutModerno\uPrincipal.pas=C:\Users\gabri\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/11/06 13:23:03.349,C:\Git\Delphi\LayoutModerno\LayoutModerno.dproj=C:\Users\gabri\OneDrive\Documentos\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2022/11/06 13:24:18.421,=C:\Git\Delphi\LayoutModerno\Unit1.pas</Transaction>
+    <Transaction>2022/11/06 13:24:30.073,C:\Git\Delphi\LayoutModerno\uSplash.pas=C:\Git\Delphi\LayoutModerno\Unit1.pas</Transaction>
+    <Transaction>2022/11/06 13:24:30.073,C:\Git\Delphi\LayoutModerno\uSplash.dfm=C:\Git\Delphi\LayoutModerno\Unit1.dfm</Transaction>
+    <Transaction>2022/11/07 20:40:04.767,=C:\Git\Delphi\LayoutModerno\Unit1.pas</Transaction>
+    <Transaction>2022/11/07 20:40:15.536,C:\Git\Delphi\LayoutModerno\uTelaBase.pas=C:\Git\Delphi\LayoutModerno\Unit1.pas</Transaction>
+    <Transaction>2022/11/07 20:40:15.536,C:\Git\Delphi\LayoutModerno\uTelaBase.dfm=C:\Git\Delphi\LayoutModerno\Unit1.dfm</Transaction>
+    <Transaction>2022/11/07 20:51:10.229,C:\Git\Delphi\LayoutModerno\uHerancaBase.dfm=C:\Git\Delphi\LayoutModerno\uTelaBase.dfm</Transaction>
+    <Transaction>2022/11/07 20:51:10.229,C:\Git\Delphi\LayoutModerno\uHerancaBase.pas=C:\Git\Delphi\LayoutModerno\uTelaBase.pas</Transaction>
+    <Transaction>2022/11/07 21:03:12.390,=C:\Git\Delphi\LayoutModerno\Unit1.pas</Transaction>
+    <Transaction>2022/11/07 21:03:30.426,=C:\Git\Delphi\LayoutModerno\Unit1.pas</Transaction>
+    <Transaction>2022/11/07 21:04:21.616,C:\Git\Delphi\LayoutModerno\uFrmHerancaListagem.dfm=C:\Git\Delphi\LayoutModerno\Unit1.dfm</Transaction>
+    <Transaction>2022/11/07 21:04:21.616,C:\Git\Delphi\LayoutModerno\uFrmHerancaListagem.pas=C:\Git\Delphi\LayoutModerno\Unit1.pas</Transaction>
+  </Transactions>
+	<ActiveMobileDevice>
+		<NoProfile iOSSimulator="iPhone5"/>
+	</ActiveMobileDevice>
+</BorlandProject>
