@@ -1,0 +1,19 @@
+inherited FrmBancoListagem: TFrmBancoListagem
+  Caption = 'Cadastro Banco'
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pnlHeader: TPanel
+    inherited lblTitulo: TLabel
+      Width = 108
+      Caption = 'Cadastro Banco'
+      ExplicitWidth = 108
+    end
+  end
+  inherited pnlFormPrincipal: TPanel
+    inherited pnlFormPrincipalBotton: TPanel
+      inherited DBNavigator1: TDBNavigator
+        Hints.Strings = ()
+      end
+    end
+  end
+end

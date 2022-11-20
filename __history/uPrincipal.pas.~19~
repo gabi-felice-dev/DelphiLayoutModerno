@@ -1,0 +1,77 @@
+unit uPrincipal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ComCtrls, Vcl.ExtCtrls, uDtmConexao;
+
+type
+  TFrmPrincipal = class(TForm)
+    Button1: TButton;
+    plnPrincipalLeft: TPanel;
+    pnlPrincipalAllClient: TPanel;
+    pnlPrincipalCenterLeft: TPanel;
+    Panel1: TPanel;
+    Panel3: TPanel;
+    Panel2: TPanel;
+    pgcPrincipal: TPageControl;
+    tsMenu: TTabSheet;
+    procedure FormShow(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmPrincipal: TFrmPrincipal;
+  dtmConexao  : TdtmConexao;
+
+implementation
+
+{$R *.dfm}
+
+uses uSplash, uHerancaListagem, uHerancaCadastro, uFuncoes;
+
+procedure TFrmPrincipal.Button1Click(Sender: TObject);
+begin
+   {FrmHerancaCadastro := TFrmHerancaCadastro.Create(Self);
+    FrmHerancaCadastro.ShowModal;
+    FrmHerancaCadastro.Release; }
+
+    CriarAba(TFrmHerancaCadastro, pgcPrincipal, -1);
+end;
+
+procedure TFrmPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+ if Assigned(dtmConexao) then
+    FreeAndNil(dtmConexao);
+end;
+
+procedure TFrmPrincipal.FormCreate(Sender: TObject);
+begin
+try
+    dtmConexao := TDtmConexao.Create(Self);
+    dtmConexao.SQLConexao.Connected := True;
+finally
+   ShowMessage('Erro ao conectar ao banco de dados..');
+end;
+
+end;
+
+procedure TFrmPrincipal.FormShow(Sender: TObject);
+begin
+     FrmSplash := TFrmSplash.Create(Self);
+     FrmSplash.Show;
+     FrmSplash.Refresh;
+     Sleep(3000);
+
+     if Assigned(FrmSplash) then
+        FrmSplash.Free;
+end;
+
+end.

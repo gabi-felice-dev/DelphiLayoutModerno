@@ -1,0 +1,82 @@
+unit uHerancaCadastro;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uHerancaBase, System.ImageList,
+  Vcl.ImgList, Vcl.StdCtrls, Vcl.Imaging.pngimage, Vcl.ExtCtrls;
+
+type
+  TFrmHerancaCadastro = class(TFrmHerancaBase)
+    Panel9: TPanel;
+    Panel8: TPanel;
+    btnApagar: TButton;
+    btnGravar: TButton;
+    btnCancelar: TButton;
+    procedure btnCancelarMouseEnter(Sender: TObject);
+    procedure btnCancelarMouseLeave(Sender: TObject);
+    procedure btnGravarMouseEnter(Sender: TObject);
+    procedure btnGravarMouseLeave(Sender: TObject);
+    procedure btnApagarMouseEnter(Sender: TObject);
+    procedure btnApagarMouseLeave(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmHerancaCadastro: TFrmHerancaCadastro;
+
+implementation
+
+{$R *.dfm}
+
+uses uPrincipal, uFuncoes;
+
+procedure TFrmHerancaCadastro.btnApagarMouseEnter(Sender: TObject);
+begin
+  inherited;
+   ButtonMouseEnter(Sender, 3);
+end;
+
+procedure TFrmHerancaCadastro.btnApagarMouseLeave(Sender: TObject);
+begin
+  inherited;
+   ButtonMouseLeave(Sender, 6);
+end;
+
+procedure TFrmHerancaCadastro.btnCancelarMouseEnter(Sender: TObject);
+begin
+  inherited;
+  ButtonMouseEnter(Sender, 6);
+end;
+
+procedure TFrmHerancaCadastro.btnCancelarMouseLeave(Sender: TObject);
+begin
+  inherited;
+  ButtonMouseLeave(Sender, 9);
+end;
+
+procedure TFrmHerancaCadastro.btnGravarMouseEnter(Sender: TObject);
+begin
+  inherited;
+  ButtonMouseEnter(Sender, 12);
+end;
+
+procedure TFrmHerancaCadastro.btnGravarMouseLeave(Sender: TObject);
+begin
+  inherited;
+  ButtonMouseLeave(Sender, 15);
+end;
+
+procedure TFrmHerancaCadastro.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  inherited;
+   FecharAba(FrmHerancaCadastro.Caption, FrmPrincipal.pgcPrincipal);
+end;
+
+end.

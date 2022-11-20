@@ -1,0 +1,12 @@
+inherited FrmBancoListagem: TFrmBancoListagem
+  Caption = 'FrmBancoListagem'
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pnlFormPrincipal: TPanel
+    inherited pnlFormPrincipalBotton: TPanel
+      inherited DBNavigator1: TDBNavigator
+        Hints.Strings = ()
+      end
+    end
+  end
+end

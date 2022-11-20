@@ -5,7 +5,11 @@ uses
   uPrincipal in 'uPrincipal.pas' {FrmPrincipal},
   uSplash in 'uSplash.pas' {FrmSplash},
   uHerancaBase in 'uHerancaBase.pas' {FrmHerancaBase},
-  uFrmHerancaListagem in 'uFrmHerancaListagem.pas' {FrmHerancaBase1};
+  uHerancaListagem in 'uHerancaListagem.pas' {FrmHerancaListagem},
+  uHerancaCadastro in 'uHerancaCadastro.pas' {FrmHerancaCadastro},
+  uFuncoes in 'uFuncoes.pas',
+  uDtmConexao in 'uDtmConexao.pas' {DtmConexao: TDataModule},
+  uBancoListagem in 'uBancoListagem.pas' {FrmBancoListagem};
 
 {$R *.res}
 
@@ -13,8 +17,5 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TFrmPrincipal, FrmPrincipal);
-  Application.CreateForm(TFrmSplash, FrmSplash);
-  Application.CreateForm(TFrmHerancaBase, FrmHerancaBase);
-  Application.CreateForm(TFrmHerancaBase1, FrmHerancaBase1);
   Application.Run;
 end.
