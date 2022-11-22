@@ -76,7 +76,7 @@ inherited FrmHerancaListagem: TFrmHerancaListagem
       DesignSize = (
         889
         65)
-      object Label1: TLabel
+      object LblPesquisa: TLabel
         Left = 8
         Top = 16
         Width = 69
@@ -91,14 +91,7 @@ inherited FrmHerancaListagem: TFrmHerancaListagem
         TabOrder = 0
         Text = ''
         TextHint = 'Digite a sua pesquisa..'
-      end
-      object btnPesquisar: TButton
-        Left = 343
-        Top = 38
-        Width = 75
-        Height = 21
-        Caption = 'Pesquisar'
-        TabOrder = 1
+        OnChange = mskPesquisarChange
       end
       object btnNovo: TButton
         Left = 568
@@ -113,7 +106,7 @@ inherited FrmHerancaListagem: TFrmHerancaListagem
         ImageAlignment = iaCenter
         ImageIndex = 19
         Images = imgBtns
-        TabOrder = 2
+        TabOrder = 1
         OnMouseEnter = btnNovoMouseEnter
         OnMouseLeave = btnNovoMouseLeave
       end
@@ -126,7 +119,7 @@ inherited FrmHerancaListagem: TFrmHerancaListagem
         ImageAlignment = iaCenter
         ImageIndex = 16
         Images = imgBtns
-        TabOrder = 3
+        TabOrder = 2
         OnMouseEnter = btnEditarMouseEnter
         OnMouseLeave = btnEditarMouseLeave
       end
@@ -139,7 +132,7 @@ inherited FrmHerancaListagem: TFrmHerancaListagem
         ImageAlignment = iaCenter
         ImageIndex = 4
         Images = imgBtns
-        TabOrder = 4
+        TabOrder = 3
         OnMouseEnter = btnApagarMouseEnter
         OnMouseLeave = btnApagarMouseLeave
       end
@@ -196,6 +189,7 @@ inherited FrmHerancaListagem: TFrmHerancaListagem
       TitleFont.Name = 'Tahoma'
       TitleFont.Style = []
       OnKeyDown = grdListagemKeyDown
+      OnTitleClick = grdListagemTitleClick
     end
   end
   inherited imgBtns: TImageList

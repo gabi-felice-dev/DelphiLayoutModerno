@@ -10,6 +10,11 @@ inherited FrmBancoListagem: TFrmBancoListagem
     end
   end
   inherited pnlFormPrincipal: TPanel
+    inherited pnlFormPrincipalTopo: TPanel
+      inherited mskPesquisar: TMaskEdit
+        OnChange = mskPesquisarChange
+      end
+    end
     inherited pnlFormPrincipalBotton: TPanel
       inherited DBNavigator1: TDBNavigator
         Hints.Strings = ()
@@ -17,12 +22,14 @@ inherited FrmBancoListagem: TFrmBancoListagem
     end
   end
   inherited QrListagem: TZQuery
+    SortedFields = 'BancoId'
     SQL.Strings = (
       'SELECT BancoId'
       '      ,CodBanco'
       '      ,DescBanco'
       '      ,WebSite'
       '  FROM Banco')
+    IndexFieldNames = 'BancoId Asc'
     object QrListagemBancoId: TIntegerField
       DisplayLabel = '#Id'
       FieldName = 'BancoId'

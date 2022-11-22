@@ -3,12 +3,28 @@ inherited FrmHerancaCadastro: TFrmHerancaCadastro
   OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
+  inherited pnlHeaderLineTop: TPanel
+    Top = 25
+  end
   inherited pnlHeader: TPanel
+    Height = 25
+    ExplicitHeight = 25
+    inherited lblTitulo: TLabel
+      Left = 7
+      Top = 2
+      ExplicitLeft = 7
+      ExplicitTop = 2
+    end
+    inherited Panel1: TPanel
+      Top = 23
+    end
     inherited Panel5: TPanel
+      Height = 21
       ExplicitTop = 2
       ExplicitHeight = 37
     end
     inherited Panel6: TPanel
+      Height = 21
       ExplicitTop = 2
       ExplicitHeight = 37
     end
@@ -16,20 +32,26 @@ inherited FrmHerancaCadastro: TFrmHerancaCadastro
       ExplicitTop = 1
     end
   end
+  inherited Panel2: TPanel
+    Top = 26
+    Height = 311
+  end
+  inherited Panel3: TPanel
+    Top = 26
+    Height = 311
+  end
   object Panel9: TPanel [5]
     Left = 1
-    Top = 42
+    Top = 26
     Width = 708
-    Height = 295
+    Height = 311
     Align = alClient
     TabOrder = 5
-    ExplicitLeft = 7
-    ExplicitTop = 46
-    ExplicitWidth = 185
-    ExplicitHeight = 41
+    ExplicitTop = 42
+    ExplicitHeight = 295
     object Panel8: TPanel
       Left = 1
-      Top = 252
+      Top = 268
       Width = 706
       Height = 42
       Align = alBottom
@@ -37,9 +59,7 @@ inherited FrmHerancaCadastro: TFrmHerancaCadastro
       Ctl3D = True
       ParentCtl3D = False
       TabOrder = 0
-      ExplicitLeft = 0
-      ExplicitTop = 295
-      ExplicitWidth = 600
+      ExplicitTop = 252
       object btnApagar: TButton
         Left = 219
         Top = 4
@@ -77,5 +97,25 @@ inherited FrmHerancaCadastro: TFrmHerancaCadastro
         OnMouseLeave = btnCancelarMouseLeave
       end
     end
+  end
+  inherited imgBtns: TImageList
+    Left = 632
+    Top = 56
+  end
+  object sql_cadastro: TZQuery
+    UpdateObject = upd_cadastro
+    Params = <>
+    Left = 369
+    Top = 66
+  end
+  object upd_cadastro: TZUpdateSQL
+    UseSequenceFieldForRefreshSQL = False
+    Left = 449
+    Top = 66
+  end
+  object ds_cadastro: TDataSource
+    DataSet = sql_cadastro
+    Left = 521
+    Top = 66
   end
 end

@@ -5,7 +5,9 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uHerancaBase, System.ImageList,
-  Vcl.ImgList, Vcl.StdCtrls, Vcl.Imaging.pngimage, Vcl.ExtCtrls;
+  Vcl.ImgList, Vcl.StdCtrls, Vcl.Imaging.pngimage, Vcl.ExtCtrls, Data.DB,
+  ZSqlUpdate, ZAbstractRODataset, ZAbstractDataset, ZDataset, uEnum, Vcl.Mask,
+  Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids;
 
 type
   TFrmHerancaCadastro = class(TFrmHerancaBase)
@@ -14,6 +16,9 @@ type
     btnApagar: TButton;
     btnGravar: TButton;
     btnCancelar: TButton;
+    sql_cadastro: TZQuery;
+    upd_cadastro: TZUpdateSQL;
+    ds_cadastro: TDataSource;
     procedure btnCancelarMouseEnter(Sender: TObject);
     procedure btnCancelarMouseLeave(Sender: TObject);
     procedure btnGravarMouseEnter(Sender: TObject);
@@ -24,6 +29,8 @@ type
   private
     { Private declarations }
   public
+     EstadoCadastro : TEstadoCadastro;
+     procedure HabilitaDesabilitaTela(chave : Boolean);
     { Public declarations }
   end;
 
@@ -77,6 +84,55 @@ procedure TFrmHerancaCadastro.FormClose(Sender: TObject;
 begin
   inherited;
    FecharAba(FrmHerancaCadastro.Caption, FrmPrincipal.pgcPrincipal);
+end;
+
+procedure TFrmHerancaCadastro.HabilitaDesabilitaTela(chave: Boolean);
+var i : Integer;
+begin
+  for i := 0 to ComponentCount -1 do
+  begin
+
+    //81 -> Utilizada para deixar o campo da tela desabilitado,
+    //      porem na tela tem que ficar com ENABLED:=FALSE
+
+    if (Components[i] is TDBEdit) and (TDBEdit(Components[i]).Tag <> 81) then begin
+      TDBEdit(Components[i]).Enabled := chave;
+    end
+
+    else if Components[i] is TDBMemo then
+      TDBMemo(Components[i]).Enabled := Chave
+
+    else if Components[i] is TDBImage then
+      TDBImage(Components[i]).Enabled := Chave
+
+    else if Components[i] is TDBListBox then
+      TDBListBox(Components[i]).Enabled := Chave
+
+    else if Components[i] is TDBComboBox then
+      TDBComboBox(Components[i]).Enabled := Chave
+
+    else if Components[i] is TDBCheckBox then
+      TDBCheckBox(Components[i]).Enabled := Chave
+
+    else if Components[i] is TDBRadioGroup then
+      TDBRadioGroup(Components[i]).Enabled := Chave
+
+    else if Components[i] is TDBLookupComboBox then
+      TDBLookupComboBox(Components[i]).Enabled := Chave
+
+    else if Components[i] is TDBRichEdit then
+      TDBRichEdit(Components[i]).Enabled := Chave
+
+    else if (Components[i] is TDBGrid) then
+      TDBGrid(Components[i]).Enabled := Chave
+
+    else if (Components[i] is TMaskEdit) then
+      TMaskEdit(Components[i]).Enabled := Chave
+
+    else if (Components[i] is TEdit)  then
+      TEdit(Components[i]).Enabled := Chave;
+
+  end;
 end;
 
 end.
