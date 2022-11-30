@@ -1,0 +1,170 @@
+inherited FrmBancoCadastro: TFrmBancoCadastro
+  Caption = 'Cadastro de Bancos'
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pnlHeader: TPanel
+    inherited lblTitulo: TLabel
+      Width = 135
+      Caption = 'Cadastro de Bancos'
+      ExplicitWidth = 135
+    end
+  end
+  inherited Panel9: TPanel
+    ExplicitLeft = -5
+    ExplicitTop = 27
+    ExplicitHeight = 311
+    object Label1: TLabel [0]
+      Left = 8
+      Top = 24
+      Width = 10
+      Height = 13
+      Caption = 'Id'
+      FocusControl = DBEdit1
+    end
+    object Label2: TLabel [1]
+      Left = 8
+      Top = 64
+      Width = 55
+      Height = 13
+      Caption = 'C'#243'd. Banco'
+      FocusControl = DBEdit2
+    end
+    object Label3: TLabel [2]
+      Left = 8
+      Top = 104
+      Width = 78
+      Height = 13
+      Caption = 'Descri'#231#227'o Banco'
+      FocusControl = DBEdit3
+    end
+    object Label4: TLabel [3]
+      Left = 8
+      Top = 144
+      Width = 18
+      Height = 13
+      Caption = 'Site'
+      FocusControl = DBEdit4
+    end
+    object DBEdit1: TDBEdit
+      Left = 8
+      Top = 40
+      Width = 43
+      Height = 21
+      DataField = 'Id'
+      DataSource = ds_cadastro
+      TabOrder = 1
+    end
+    object DBEdit2: TDBEdit
+      Left = 8
+      Top = 80
+      Width = 100
+      Height = 21
+      DataField = 'CodBanco'
+      DataSource = ds_cadastro
+      TabOrder = 2
+    end
+    object DBEdit3: TDBEdit
+      Left = 8
+      Top = 120
+      Width = 654
+      Height = 21
+      DataField = 'DescBanco'
+      DataSource = ds_cadastro
+      TabOrder = 3
+    end
+    object DBEdit4: TDBEdit
+      Left = 8
+      Top = 160
+      Width = 654
+      Height = 21
+      DataField = 'Site'
+      DataSource = ds_cadastro
+      TabOrder = 4
+    end
+  end
+  inherited sql_cadastro_: TZQuery
+    Connection = DtmConexao.SQLConexao
+    SQL.Strings = (
+      'SELECT BancoId'
+      '      ,CodBanco'
+      '      ,DescBanco'
+      '      ,WebSite'
+      '  FROM Banco'
+      '  WHERE BancoId = :BancoId')
+    Params = <
+      item
+        DataType = ftUnknown
+        Name = 'BancoId'
+        ParamType = ptUnknown
+      end>
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'BancoId'
+        ParamType = ptUnknown
+      end>
+    object sql_cadastro_BancoId: TIntegerField
+      FieldName = 'Id'
+      ReadOnly = True
+    end
+    object sql_cadastro_CodBanco: TWideStringField
+      DisplayLabel = 'C'#243'd. Banco'
+      FieldName = 'CodBanco'
+      Required = True
+      Size = 3
+    end
+    object sql_cadastro_DescBanco: TWideStringField
+      DisplayLabel = 'Descri'#231#227'o Banco'
+      FieldName = 'DescBanco'
+      Required = True
+      Size = 50
+    end
+    object sql_cadastro_WebSite: TWideStringField
+      FieldName = 'Site'
+      Size = 100
+    end
+  end
+  inherited upd_cadastro: TZUpdateSQL
+    DeleteSQL.Strings = (
+      'DELETE FROM Banco'
+      'WHERE'
+      
+        '  ((Banco.BancoId IS NULL AND :OLD_BancoId IS NULL) OR (Banco.Ba' +
+        'ncoId = :OLD_BancoId))')
+    InsertSQL.Strings = (
+      'INSERT INTO Banco'
+      '  (CodBanco, DescBanco, WebSite)'
+      'VALUES'
+      '  (:CodBanco, :DescBanco, :WebSite)')
+    ModifySQL.Strings = (
+      'UPDATE Banco SET'
+      '  CodBanco = :CodBanco,'
+      '  DescBanco = :DescBanco,'
+      '  WebSite = :WebSite'
+      'WHERE'
+      
+        '  ((Banco.BancoId IS NULL AND :OLD_BancoId IS NULL) OR (Banco.Ba' +
+        'ncoId = :OLD_BancoId))')
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'CodBanco'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'DescBanco'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'WebSite'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'OLD_BancoId'
+        ParamType = ptUnknown
+      end>
+  end
+end

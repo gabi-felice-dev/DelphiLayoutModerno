@@ -11,8 +11,14 @@ inherited FrmBancoListagem: TFrmBancoListagem
   end
   inherited pnlFormPrincipal: TPanel
     inherited pnlFormPrincipalTopo: TPanel
-      inherited mskPesquisar: TMaskEdit
-        OnChange = mskPesquisarChange
+      inherited btnNovo: TButton
+        OnClick = btnNovoClick
+      end
+      inherited btnEditar: TButton
+        OnClick = btnEditarClick
+      end
+      inherited btnApagar: TButton
+        OnClick = btnApagarClick
       end
     end
     inherited pnlFormPrincipalBotton: TPanel

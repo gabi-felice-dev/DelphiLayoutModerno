@@ -1,0 +1,12 @@
+inherited FrmBancoCadastro: TFrmBancoCadastro
+  Caption = 'Cadastro de Bancos'
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pnlHeader: TPanel
+    inherited lblTitulo: TLabel
+      Width = 135
+      Caption = 'Cadastro de Bancos'
+      ExplicitWidth = 135
+    end
+  end
+end

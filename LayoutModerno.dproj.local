@@ -19,26 +19,29 @@
     <Transaction>2022/11/07 20:51:10.000.229,C:\Git\Delphi\LayoutModerno\uHerancaBase.dfm=C:\Git\Delphi\LayoutModerno\uTelaBase.dfm</Transaction>
     <Transaction>2022/11/07 21:03:12.000.390,=C:\Git\Delphi\LayoutModerno\Unit1.pas</Transaction>
     <Transaction>2022/11/07 21:03:30.000.426,=C:\Git\Delphi\LayoutModerno\Unit1.pas</Transaction>
-    <Transaction>2022/11/07 21:04:21.000.616,C:\Git\Delphi\LayoutModerno\uFrmHerancaListagem.pas=C:\Git\Delphi\LayoutModerno\Unit1.pas</Transaction>
     <Transaction>2022/11/07 21:04:21.000.616,C:\Git\Delphi\LayoutModerno\uFrmHerancaListagem.dfm=C:\Git\Delphi\LayoutModerno\Unit1.dfm</Transaction>
+    <Transaction>2022/11/07 21:04:21.000.616,C:\Git\Delphi\LayoutModerno\uFrmHerancaListagem.pas=C:\Git\Delphi\LayoutModerno\Unit1.pas</Transaction>
     <Transaction>2022/11/20 08:44:29.000.100,=C:\Git\Delphi\DelphiLayoutModerno\Unit2.pas</Transaction>
-    <Transaction>2022/11/20 08:45:43.000.422,C:\Git\Delphi\DelphiLayoutModerno\uHerancaListagem.dfm=C:\Git\Delphi\DelphiLayoutModerno\Unit2.dfm</Transaction>
     <Transaction>2022/11/20 08:45:43.000.422,C:\Git\Delphi\DelphiLayoutModerno\uHerancaListagem.pas=C:\Git\Delphi\DelphiLayoutModerno\Unit2.pas</Transaction>
+    <Transaction>2022/11/20 08:45:43.000.422,C:\Git\Delphi\DelphiLayoutModerno\uHerancaListagem.dfm=C:\Git\Delphi\DelphiLayoutModerno\Unit2.dfm</Transaction>
     <Transaction>2022/11/20 08:45:53.000.366,C:\Git\Delphi\DelphiLayoutModerno\uFrmHerancaListagem.pas=</Transaction>
     <Transaction>2022/11/20 09:23:23.000.143,=C:\Git\Delphi\DelphiLayoutModerno\Unit1.pas</Transaction>
-    <Transaction>2022/11/20 09:23:41.000.540,C:\Git\Delphi\DelphiLayoutModerno\Unit1.dfm=C:\Git\Delphi\DelphiLayoutModerno\uHerancaCadastro.dfm</Transaction>
     <Transaction>2022/11/20 09:23:41.000.540,C:\Git\Delphi\DelphiLayoutModerno\Unit1.pas=C:\Git\Delphi\DelphiLayoutModerno\uHerancaCadastro.pas</Transaction>
+    <Transaction>2022/11/20 09:23:41.000.540,C:\Git\Delphi\DelphiLayoutModerno\Unit1.dfm=C:\Git\Delphi\DelphiLayoutModerno\uHerancaCadastro.dfm</Transaction>
     <Transaction>2022/11/20 09:44:59.000.765,=C:\Git\Delphi\DelphiLayoutModerno\Unit1.pas</Transaction>
     <Transaction>2022/11/20 09:45:05.000.511,C:\Git\Delphi\DelphiLayoutModerno\Unit1.pas=C:\Git\Delphi\DelphiLayoutModerno\uFuncoes.pas</Transaction>
     <Transaction>2022/11/20 10:19:39.000.387,=C:\Git\Delphi\DelphiLayoutModerno\Unit1.pas</Transaction>
     <Transaction>2022/11/20 10:19:52.000.913,C:\Git\Delphi\DelphiLayoutModerno\Unit1.pas=C:\Git\Delphi\DelphiLayoutModerno\uDtmConexao.pas</Transaction>
     <Transaction>2022/11/20 10:19:52.000.913,C:\Git\Delphi\DelphiLayoutModerno\Unit1.dfm=C:\Git\Delphi\DelphiLayoutModerno\uDtmConexao.dfm</Transaction>
     <Transaction>2022/11/20 11:09:49.000.524,=C:\Git\Delphi\DelphiLayoutModerno\Unit1.pas</Transaction>
-    <Transaction>2022/11/20 11:10:16.000.117,C:\Git\Delphi\DelphiLayoutModerno\Unit1.dfm=C:\Git\Delphi\DelphiLayoutModerno\uBancoListagem.dfm</Transaction>
     <Transaction>2022/11/20 11:10:16.000.117,C:\Git\Delphi\DelphiLayoutModerno\Unit1.pas=C:\Git\Delphi\DelphiLayoutModerno\uBancoListagem.pas</Transaction>
+    <Transaction>2022/11/20 11:10:16.000.117,C:\Git\Delphi\DelphiLayoutModerno\Unit1.dfm=C:\Git\Delphi\DelphiLayoutModerno\uBancoListagem.dfm</Transaction>
     <Transaction>2022/11/21 21:03:56.385,=C:\Git\Delphi\DelphiLayoutModerno\Unit1.pas</Transaction>
     <Transaction>2022/11/21 21:49:21.073,=C:\Git\Delphi\DelphiLayoutModerno\Unit1.pas</Transaction>
     <Transaction>2022/11/21 21:49:30.467,C:\Git\Delphi\DelphiLayoutModerno\uEnum.pas=C:\Git\Delphi\DelphiLayoutModerno\Unit1.pas</Transaction>
+    <Transaction>2022/11/29 21:08:51.640,=C:\Git\Delphi\DelphiLayoutModerno\Unit1.pas</Transaction>
+    <Transaction>2022/11/29 21:09:02.462,C:\Git\Delphi\DelphiLayoutModerno\uBancoCadastro.dfm=C:\Git\Delphi\DelphiLayoutModerno\Unit1.dfm</Transaction>
+    <Transaction>2022/11/29 21:09:02.462,C:\Git\Delphi\DelphiLayoutModerno\uBancoCadastro.pas=C:\Git\Delphi\DelphiLayoutModerno\Unit1.pas</Transaction>
   </Transactions>
 	<ActiveMobileDevice>
 		<NoProfile iOSSimulator="iPhone5"/>

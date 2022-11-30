@@ -1,6 +1,9 @@
 inherited FrmHerancaCadastro: TFrmHerancaCadastro
   Caption = 'Digite o caption aqui...'
+  KeyPreview = True
   OnClose = FormClose
+  OnKeyDown = FormKeyDown
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlHeaderLineTop: TPanel
@@ -69,6 +72,7 @@ inherited FrmHerancaCadastro: TFrmHerancaCadastro
         ImageIndex = 4
         Images = imgBtns
         TabOrder = 0
+        OnClick = btnApagarClick
         OnMouseEnter = btnApagarMouseEnter
         OnMouseLeave = btnApagarMouseLeave
       end
@@ -81,6 +85,7 @@ inherited FrmHerancaCadastro: TFrmHerancaCadastro
         ImageIndex = 13
         Images = imgBtns
         TabOrder = 1
+        OnClick = btnGravarClick
         OnMouseEnter = btnGravarMouseEnter
         OnMouseLeave = btnGravarMouseLeave
       end
@@ -93,6 +98,7 @@ inherited FrmHerancaCadastro: TFrmHerancaCadastro
         ImageIndex = 7
         Images = imgBtns
         TabOrder = 2
+        OnClick = btnCancelarClick
         OnMouseEnter = btnCancelarMouseEnter
         OnMouseLeave = btnCancelarMouseLeave
       end
@@ -102,8 +108,10 @@ inherited FrmHerancaCadastro: TFrmHerancaCadastro
     Left = 632
     Top = 56
   end
-  object sql_cadastro: TZQuery
+  object sql_cadastro_: TZQuery
     UpdateObject = upd_cadastro
+    AfterPost = sql_cadastro_AfterPost
+    AfterDelete = sql_cadastro_AfterDelete
     Params = <>
     Left = 369
     Top = 66
@@ -114,7 +122,7 @@ inherited FrmHerancaCadastro: TFrmHerancaCadastro
     Top = 66
   end
   object ds_cadastro: TDataSource
-    DataSet = sql_cadastro
+    DataSet = sql_cadastro_
     Left = 521
     Top = 66
   end

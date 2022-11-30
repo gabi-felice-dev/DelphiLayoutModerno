@@ -10,7 +10,8 @@ uses
   uFuncoes in 'uFuncoes.pas',
   uDtmConexao in 'uDtmConexao.pas' {DtmConexao: TDataModule},
   uBancoListagem in 'uBancoListagem.pas' {FrmBancoListagem},
-  uEnum in 'uEnum.pas';
+  uEnum in 'uEnum.pas',
+  uBancoCadastro in 'uBancoCadastro.pas' {FrmBancoCadastro};
 
 {$R *.res}
 
@@ -18,5 +19,6 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TFrmPrincipal, FrmPrincipal);
+  Application.CreateForm(TFrmBancoCadastro, FrmBancoCadastro);
   Application.Run;
 end.

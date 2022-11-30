@@ -1,0 +1,165 @@
+unit uHerancaCadastro;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uHerancaBase, System.ImageList,
+  Vcl.ImgList, Vcl.StdCtrls, Vcl.Imaging.pngimage, Vcl.ExtCtrls, Data.DB,
+  ZSqlUpdate, ZAbstractRODataset, ZAbstractDataset, ZDataset, uEnum, Vcl.Mask,
+  Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids;
+
+type
+  TFrmHerancaCadastro = class(TFrmHerancaBase)
+    Panel9: TPanel;
+    Panel8: TPanel;
+    btnApagar: TButton;
+    btnGravar: TButton;
+    btnCancelar: TButton;
+    sql_cadastro_: TZQuery;
+    upd_cadastro: TZUpdateSQL;
+    ds_cadastro: TDataSource;
+    procedure btnCancelarMouseEnter(Sender: TObject);
+    procedure btnCancelarMouseLeave(Sender: TObject);
+    procedure btnGravarMouseEnter(Sender: TObject);
+    procedure btnGravarMouseLeave(Sender: TObject);
+    procedure btnApagarMouseEnter(Sender: TObject);
+    procedure btnApagarMouseLeave(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btnCancelarClick(Sender: TObject);
+    procedure btnGravarClick(Sender: TObject);
+    procedure btnApagarClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+     EstadoCadastro : TEstadoCadastro;
+     procedure HabilitaDesabilitaTela(chave : Boolean);
+    { Public declarations }
+  end;
+
+var
+  FrmHerancaCadastro: TFrmHerancaCadastro;
+
+implementation
+
+{$R *.dfm}
+
+uses uPrincipal, uFuncoes;
+
+procedure TFrmHerancaCadastro.btnApagarClick(Sender: TObject);
+begin
+  inherited;
+  if MessageDlg('Apagar este Registro?', mtConfirmation, [mbYes, mbNo],0) = IDYES then
+  begin
+    sql_cadastro_.Delete;
+    Close;
+  end;
+end;
+
+procedure TFrmHerancaCadastro.btnApagarMouseEnter(Sender: TObject);
+begin
+  inherited;
+   ButtonMouseEnter(Sender, 3);
+end;
+
+procedure TFrmHerancaCadastro.btnApagarMouseLeave(Sender: TObject);
+begin
+  inherited;
+   ButtonMouseLeave(Sender, 6);
+end;
+
+procedure TFrmHerancaCadastro.btnCancelarClick(Sender: TObject);
+begin
+  inherited;
+  sql_cadastro_.Cancel;
+  Close;
+end;
+
+procedure TFrmHerancaCadastro.btnCancelarMouseEnter(Sender: TObject);
+begin
+  inherited;
+  ButtonMouseEnter(Sender, 6);
+end;
+
+procedure TFrmHerancaCadastro.btnCancelarMouseLeave(Sender: TObject);
+begin
+  inherited;
+  ButtonMouseLeave(Sender, 9);
+end;
+
+procedure TFrmHerancaCadastro.btnGravarClick(Sender: TObject);
+begin
+  inherited;
+  sql_cadastro_.Post;
+  Close;
+end;
+
+procedure TFrmHerancaCadastro.btnGravarMouseEnter(Sender: TObject);
+begin
+  inherited;
+  ButtonMouseEnter(Sender, 12);
+end;
+
+procedure TFrmHerancaCadastro.btnGravarMouseLeave(Sender: TObject);
+begin
+  inherited;
+  ButtonMouseLeave(Sender, 15);
+end;
+
+procedure TFrmHerancaCadastro.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  inherited;
+   FecharAba(FrmHerancaCadastro.Caption, FrmPrincipal.pgcPrincipal);
+end;
+
+procedure TFrmHerancaCadastro.HabilitaDesabilitaTela(chave: Boolean);
+var i : Integer;
+begin
+  for i := 0 to ComponentCount -1 do
+  begin
+
+    //81 -> Utilizada para deixar o campo da tela desabilitado,
+    //      porem na tela tem que ficar com ENABLED:=FALSE
+
+    if (Components[i] is TDBEdit) and (TDBEdit(Components[i]).Tag <> 81) then begin
+      TDBEdit(Components[i]).Enabled := chave;
+    end
+
+    else if Components[i] is TDBMemo then
+      TDBMemo(Components[i]).Enabled := Chave
+
+    else if Components[i] is TDBImage then
+      TDBImage(Components[i]).Enabled := Chave
+
+    else if Components[i] is TDBListBox then
+      TDBListBox(Components[i]).Enabled := Chave
+
+    else if Components[i] is TDBComboBox then
+      TDBComboBox(Components[i]).Enabled := Chave
+
+    else if Components[i] is TDBCheckBox then
+      TDBCheckBox(Components[i]).Enabled := Chave
+
+    else if Components[i] is TDBRadioGroup then
+      TDBRadioGroup(Components[i]).Enabled := Chave
+
+    else if Components[i] is TDBLookupComboBox then
+      TDBLookupComboBox(Components[i]).Enabled := Chave
+
+    else if Components[i] is TDBRichEdit then
+      TDBRichEdit(Components[i]).Enabled := Chave
+
+    else if (Components[i] is TDBGrid) then
+      TDBGrid(Components[i]).Enabled := Chave
+
+    else if (Components[i] is TMaskEdit) then
+      TMaskEdit(Components[i]).Enabled := Chave
+
+    else if (Components[i] is TEdit)  then
+      TEdit(Components[i]).Enabled := Chave;
+
+  end;
+end;
+
+end.

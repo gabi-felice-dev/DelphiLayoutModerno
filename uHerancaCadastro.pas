@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uHerancaBase, System.ImageList,
   Vcl.ImgList, Vcl.StdCtrls, Vcl.Imaging.pngimage, Vcl.ExtCtrls, Data.DB,
   ZSqlUpdate, ZAbstractRODataset, ZAbstractDataset, ZDataset, uEnum, Vcl.Mask,
-  Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids;
+  Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids, ZAbstractConnection, ZConnection;
 
 type
   TFrmHerancaCadastro = class(TFrmHerancaBase)
@@ -16,7 +16,7 @@ type
     btnApagar: TButton;
     btnGravar: TButton;
     btnCancelar: TButton;
-    sql_cadastro: TZQuery;
+    sql_cadastro_: TZQuery;
     upd_cadastro: TZUpdateSQL;
     ds_cadastro: TDataSource;
     procedure btnCancelarMouseEnter(Sender: TObject);
@@ -26,7 +26,18 @@ type
     procedure btnApagarMouseEnter(Sender: TObject);
     procedure btnApagarMouseLeave(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btnCancelarClick(Sender: TObject);
+    procedure btnGravarClick(Sender: TObject);
+    procedure btnApagarClick(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure sql_cadastro_AfterPost(DataSet: TDataSet);
+    procedure sql_cadastro_AfterDelete(DataSet: TDataSet);
+    procedure FormShow(Sender: TObject);
   private
+    procedure PostOrDeleteWithCommitOrRollback(aConexao: TZConnection;
+      aQry: TZQuery);
+    procedure ControleEstado(qry: TZQuery; EstadoDoCadastro: TEstadoCadastro;
+      BtnSalva, btnCancelar, BtnExclui: TButton);
     { Private declarations }
   public
      EstadoCadastro : TEstadoCadastro;
@@ -41,7 +52,17 @@ implementation
 
 {$R *.dfm}
 
-uses uPrincipal, uFuncoes;
+uses uPrincipal, uFuncoes, uDtmConexao;
+
+procedure TFrmHerancaCadastro.btnApagarClick(Sender: TObject);
+begin
+  inherited;
+  if MessageDlg('Apagar este Registro?', mtConfirmation, [mbYes, mbNo],0) = IDYES then
+  begin
+    sql_cadastro_.Delete;
+    Close;
+  end;
+end;
 
 procedure TFrmHerancaCadastro.btnApagarMouseEnter(Sender: TObject);
 begin
@@ -55,6 +76,13 @@ begin
    ButtonMouseLeave(Sender, 6);
 end;
 
+procedure TFrmHerancaCadastro.btnCancelarClick(Sender: TObject);
+begin
+  inherited;
+  sql_cadastro_.Cancel;
+  Close;
+end;
+
 procedure TFrmHerancaCadastro.btnCancelarMouseEnter(Sender: TObject);
 begin
   inherited;
@@ -65,6 +93,13 @@ procedure TFrmHerancaCadastro.btnCancelarMouseLeave(Sender: TObject);
 begin
   inherited;
   ButtonMouseLeave(Sender, 9);
+end;
+
+procedure TFrmHerancaCadastro.btnGravarClick(Sender: TObject);
+begin
+  inherited;
+  sql_cadastro_.Post;
+  Close;
 end;
 
 procedure TFrmHerancaCadastro.btnGravarMouseEnter(Sender: TObject);
@@ -84,6 +119,24 @@ procedure TFrmHerancaCadastro.FormClose(Sender: TObject;
 begin
   inherited;
    FecharAba(FrmHerancaCadastro.Caption, FrmPrincipal.pgcPrincipal);
+end;
+
+procedure TFrmHerancaCadastro.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  inherited;
+  if (Key =VK_ESCAPE) then
+  begin
+    if (sql_cadastro_.State in [dsInsert, dsEdit]) then
+      sql_cadastro_.Cancel;
+    Close;
+  end;
+end;
+
+procedure TFrmHerancaCadastro.FormShow(Sender: TObject);
+begin
+  inherited;
+  ControleEstado(sql_cadastro_, EstadoCadastro, btnGravar, btnCancelar ,btnApagar);
 end;
 
 procedure TFrmHerancaCadastro.HabilitaDesabilitaTela(chave: Boolean);
@@ -132,6 +185,52 @@ begin
     else if (Components[i] is TEdit)  then
       TEdit(Components[i]).Enabled := Chave;
 
+  end;
+end;
+
+procedure TFrmHerancaCadastro.sql_cadastro_AfterDelete(DataSet: TDataSet);
+begin
+  inherited;
+   PostOrDeleteWithCommitOrRollback(dtmConexao.SQLConexao,  sql_cadastro_);
+end;
+
+procedure TFrmHerancaCadastro.sql_cadastro_AfterPost(DataSet: TDataSet);
+begin
+  inherited;
+   PostOrDeleteWithCommitOrRollback(dtmConexao.SQLConexao,  sql_cadastro_);
+end;
+
+procedure TFrmHerancaCadastro.PostOrDeleteWithCommitOrRollback(aConexao: TZConnection; aQry: TZQuery);
+begin
+  Try
+    aConexao.StartTransaction;
+    aQry.ApplyUpdates;
+    aConexao.Commit;
+    aQry.Refresh;
+  Except
+    aConexao.Rollback;
+  End;
+end;
+
+procedure TFrmHerancaCadastro.ControleEstado(qry: TZQuery;EstadoDoCadastro:TEstadoCadastro;
+  BtnSalva:TButton; btnCancelar:TButton; BtnExclui:TButton);
+begin
+  if (EstadoDoCadastro = ecNovo) then begin
+     BtnExclui.Visible :=false;
+     lblTitulo.Caption :=lblTitulo.Caption+ ' - [NOVO]';
+     qry.Append;
+  end
+  else if (EstadoDoCadastro = ecModificar) then begin
+     BtnExclui.Visible :=false;
+     lblTitulo.Caption :=lblTitulo.Caption+ ' - [MODIFICAR]';
+     qry.Edit;
+  end
+  else begin
+     lblTitulo.Caption   :=lblTitulo.Caption+ ' - [APAGAR]';
+     BtnExclui.Left      :=btnCancelar.Left;
+     BtnSalva.Visible    :=false;
+     btnCancelar.Visible :=false;
+     BtnExclui.Visible   :=true;
   end;
 end;
 
