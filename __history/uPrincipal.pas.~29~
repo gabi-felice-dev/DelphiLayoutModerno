@@ -5,8 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, Vcl.ComCtrls,
-  Vcl.ExtCtrls, uDtmConexao, System.ImageList, Vcl.ImgList,
-    Vcl.Imaging.pngimage, Vcl.WinXCtrls;
+  Vcl.ExtCtrls, uDtmConexao, System.ImageList, Vcl.ImgList, JvExStdCtrls,
+  JvButton, JvCtrls, Vcl.Imaging.pngimage, Vcl.WinXCtrls;
 
 type
   TfrmPrincipal = class(TForm)
@@ -31,8 +31,9 @@ type
     Panel2: TPanel;
     Image2: TImage;
     Label2: TLabel;
-    btnFinanceiro: TButton;
-    btnVendas: TButton;
+    btnFinanceiro: TJvImgBtn;
+    btnVendas: TJvImgBtn;
+    btnConfiguracoes: TJvImgBtn;
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

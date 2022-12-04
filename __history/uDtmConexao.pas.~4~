@@ -3,13 +3,11 @@ unit uDtmConexao;
 interface
 
 uses
-  System.SysUtils, System.Classes, ZAbstractConnection, ZConnection, Data.DB,
-  Data.Win.ADODB, ZAbstractRODataset, ZAbstractDataset, ZDataset;
+  System.SysUtils, System.Classes, ZAbstractConnection, ZConnection;
 
 type
   TDtmConexao = class(TDataModule)
     SQLConexao: TZConnection;
-    QryMenu: TZQuery;
   private
     { Private declarations }
   public

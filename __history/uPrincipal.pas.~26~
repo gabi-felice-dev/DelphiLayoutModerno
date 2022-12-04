@@ -4,8 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ComCtrls, Vcl.ExtCtrls, uDtmConexao,
-  ZAbstractConnection, ZConnection;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ComCtrls, Vcl.ExtCtrls, uDtmConexao;
 
 type
   TFrmPrincipal = class(TForm)
@@ -21,6 +20,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -28,28 +28,35 @@ type
   end;
 
 var
-  FrmPrincipal: TFrmPrincipal;
-  dtmConexao  : TdtmConexao;
+  FrmPrincipal  : TFrmPrincipal;
+  varDtmConexao : TDtmConexao;
 
 implementation
 
 {$R *.dfm}
 
-uses uSplash, uHerancaListagem, uHerancaCadastro, uFuncoes;
+uses uSplash, uHerancaListagem, uHerancaCadastro, uFuncoes, uBancoListagem;
 
 procedure TFrmPrincipal.Button1Click(Sender: TObject);
 begin
-   {FrmHerancaCadastro := TFrmHerancaCadastro.Create(Self);
-    FrmHerancaCadastro.ShowModal;
-    FrmHerancaCadastro.Release; }
+    CriarAba(TFrmBancoListagem, pgcPrincipal, -1);
+end;
 
-    CriarAba(TFrmHerancaCadastro, pgcPrincipal, -1);
+procedure TFrmPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+ if Assigned(dtmConexao) then
+    FreeAndNil(dtmConexao);
 end;
 
 procedure TFrmPrincipal.FormCreate(Sender: TObject);
 begin
-    dtmConexao := TDtmConexao.Create(Self);
-    dtmConexao.SQLConnection.Connected := true;
+  try
+    varDtmConexao := TDtmConexao.Create(Self);
+    varDtmConexao.SQLConexao.Connected := True;
+  Except on E: Exception do
+    ShowMessage('Erro:' + E.Message );
+  end;
+
 end;
 
 procedure TFrmPrincipal.FormShow(Sender: TObject);

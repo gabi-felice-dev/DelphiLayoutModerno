@@ -1,0 +1,84 @@
+unit uPrincipal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ComCtrls, Vcl.ExtCtrls, uDtmConexao,
+  Data.FMTBcd, Data.DB, Data.SqlExpr;
+
+type
+  TFrmPrincipal = class(TForm)
+    plnPrincipalLeft: TPanel;
+    pnlPrincipalAllClient: TPanel;
+    pnlPrincipalCenterLeft: TPanel;
+    Panel1: TPanel;
+    Panel3: TPanel;
+    Panel2: TPanel;
+    pgcPrincipal: TPageControl;
+    tsMenu: TTabSheet;
+    procedure FormShow(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmPrincipal  : TFrmPrincipal;
+  varDtmConexao : TDtmConexao;
+
+implementation
+
+{$R *.dfm}
+
+uses uSplash, uHerancaListagem, uHerancaCadastro, uFuncoes, uBancoListagem;
+
+procedure TFrmPrincipal.FiltrarMenuLikeTitulo(aLike:String);
+begin
+  dtmConexao.QryMenu.Close;
+  dtmConexao.QryMenu.SQL.Clear;
+  dtmConexao.QryMenu.SQL.Add(' SELECT menuId, titulo, nomeImagem, nomeFormulario, processo FROM Menu');
+  dtmConexao.QryMenu.SQL.Add('  WHERE titulo like :titulo ');
+  dtmConexao.QryMenu.ParamByName('titulo').AsString:='%'+aLike+'%';
+  dtmConexao.QryMenu.Open;
+  MontarMenu;
+end;
+
+procedure TFrmPrincipal.Button1Click(Sender: TObject);
+begin
+    CriarAba(TFrmBancoListagem, pgcPrincipal, -1);
+end;
+
+procedure TFrmPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+ if Assigned(dtmConexao) then
+    FreeAndNil(dtmConexao);
+end;
+
+procedure TFrmPrincipal.FormCreate(Sender: TObject);
+begin
+  try
+    varDtmConexao := TDtmConexao.Create(Self);
+    varDtmConexao.SQLConexao.Connected := True;
+  Except on E: Exception do
+    ShowMessage('Erro:' + E.Message );
+  end;
+
+end;
+
+procedure TFrmPrincipal.FormShow(Sender: TObject);
+begin
+     FrmSplash := TFrmSplash.Create(Self);
+     FrmSplash.Show;
+     FrmSplash.Refresh;
+     Sleep(3000);
+
+     if Assigned(FrmSplash) then
+        FrmSplash.Free;
+end;
+
+end.

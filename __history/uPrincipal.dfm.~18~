@@ -78,6 +78,42 @@ object frmPrincipal: TfrmPrincipal
       BevelOuter = bvNone
       TabOrder = 1
     end
+    object btnFinanceiro: TJvImgBtn
+      Left = 16
+      Top = 53
+      Width = 220
+      Height = 129
+      ImageIndex = 1
+      Images = imgButtons
+      TabOrder = 2
+      OnClick = btnFinanceiroClick
+      OnMouseEnter = btnFinanceiroMouseEnter
+      OnMouseLeave = btnFinanceiroMouseLeave
+    end
+    object btnVendas: TJvImgBtn
+      Left = 16
+      Top = 183
+      Width = 220
+      Height = 129
+      ImageIndex = 3
+      Images = imgButtons
+      TabOrder = 3
+      OnClick = btnVendasClick
+      OnMouseEnter = btnVendasMouseEnter
+      OnMouseLeave = btnVendasMouseLeave
+    end
+    object btnConfiguracoes: TJvImgBtn
+      Left = 16
+      Top = 313
+      Width = 220
+      Height = 129
+      ImageIndex = 5
+      Images = imgButtons
+      TabOrder = 4
+      OnClick = btnConfiguracoesClick
+      OnMouseEnter = btnConfiguracoesMouseEnter
+      OnMouseLeave = btnConfiguracoesMouseLeave
+    end
   end
   object pnlPrincipalCenter: TPanel
     Left = 240
